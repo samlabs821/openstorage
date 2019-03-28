@@ -13,6 +13,9 @@ install:
   - go get -u github.com/go-swagger/go-swagger/cmd/swagger
 script:
   - git-validation -run DCO,short-subject
+# Temporary hack to work around 'go fmt' difference between go 1.9/1.10 and 1.11+, only affects node_test.go
+  - go fmt csi/node_test.go
+  - go fmt csi/v0.3/node_test.go
   - go fmt $(go list ./... | grep -v vendor) | wc -l | grep 0
   - make docker-proto
   - git diff $(find . -name "*.pb.*go" -o -name "api.swagger.json" | grep -v vendor) | wc -l | grep "^0"
