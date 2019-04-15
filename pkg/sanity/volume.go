@@ -465,7 +465,6 @@ var _ = Describe("Volume [Volume Tests]", func() {
 			numVolumesAfter  int
 			volumeID         string
 			mountPath        string
-			volumesToCreate  int
 		)
 
 		BeforeEach(func() {
@@ -497,7 +496,6 @@ var _ = Describe("Volume [Volume Tests]", func() {
 
 			var err error
 
-			volumesToCreate = 1
 			var size = 5
 			vr := &api.VolumeCreateRequest{
 				Locator: &api.VolumeLocator{
